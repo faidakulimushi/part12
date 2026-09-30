@@ -1,0 +1,32 @@
+Exercise 7: Little bit of MongoDB coding
+
+Implemented GET /todos/:id and PUT /todos/:id in:
+
+todo-app/todo-backend/routes/todos.js
+
+Started MongoDB in a Docker container with:
+
+docker run -d --name mongo -p 27017:27017 mongo
+
+Set the MongoDB connection URL with:
+
+export MONGO_URL=mongodb://localhost:27017/todos
+
+Started the Node backend outside a container with:
+
+npm start
+
+Created a test Todo with:
+
+curl -X POST http://localhost:3000/todos \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Learn Docker","done":false}'
+
+Tested GET /todos/:id successfully.
+
+Tested PUT /todos/:id successfully and updated the Todo to:
+
+text: Learn Docker and MongoDB
+done: true
+
+The GET and PUT routes work correctly.
