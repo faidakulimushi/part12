@@ -1,0 +1,30 @@
+Exercise 6: Docker compose
+
+Created todo-app/todo-backend/docker-compose.yml:
+
+services:
+  todo-backend:
+    build: .
+    ports:
+      - "3000:3000"
+
+Started the application with:
+
+cd todo-app/todo-backend
+docker compose up -d
+
+The Docker Compose container started successfully.
+
+Checked the running container with:
+
+docker ps
+
+The port was published as:
+
+0.0.0.0:3000->3000/tcp
+
+Visited:
+
+http://localhost:3000/
+
+The visit counter worked and increased when refreshing the page.
