@@ -1,0 +1,8 @@
+apt update
+apt install -y curl
+curl -sL https://deb.nodesource.com/setup_24.x | bash
+apt install -y nodejs
+node --version
+v24.x.x
+node /usr/src/app/index.js
+Hello World
