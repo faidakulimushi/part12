@@ -1,0 +1,13 @@
+$ docker run -it ubuntu bash
+root@afd2870f0b26:/# ls -la /usr/src/app
+ls: cannot access '/usr/src/app': No such file or directory
+root@afd2870f0b26:/# ^C
+root@afd2870f0b26:/# mkdir -p /usr/src/app
+root@afd2870f0b26:/# touch /usr/src/app/index.js
+root@afd2870f0b26:/# ls -la /usr/src/app
+total 8
+drwxr-xr-x 2 root root 4096 Sep 30 09:14 .
+drwxr-xr-x 1 root root 4096 Sep 30 09:13 ..
+-rw-r--r-- 1 root root 0 Sep 30 09:14 index.js
+root@afd2870f0b26:/# exit
+exit
