@@ -1,0 +1,9 @@
+$ docker run -it ubuntu
+root@67199f00d088:/# apt update
+...
+root@67199f00d088:/# apt install nano
+...
+root@67199f00d088:/# mkdir -p /usr/src/app
+root@67199f00d088:/# nano /usr/src/app/index.js
+root@67199f00d088:/# cat /usr/src/app/index.js
+console.log('Hello World')
