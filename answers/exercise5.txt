@@ -1,0 +1,43 @@
+Exercise 5: Containerizing a Node application
+
+Commands used:
+
+cd todo-app/todo-backend
+npm install
+npm start
+
+The Todo backend worked outside the container and the visit counter increased at:
+http://localhost:3000/
+
+Created Dockerfile:
+
+FROM node:24
+
+WORKDIR /usr/src/app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+
+Built the Docker image with:
+
+docker build -t todo-backend .
+
+The image was successfully built and tagged as:
+todo-backend:latest
+
+Ran the container with:
+
+docker run -p 3000:3000 todo-backend
+
+The application worked inside the Docker container.
+
+The visit counter incr
+eased when refreshing:
+http://localhost:3000/
