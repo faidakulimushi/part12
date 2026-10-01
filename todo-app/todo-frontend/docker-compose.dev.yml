@@ -1,0 +1,12 @@
+services:
+  todo-frontend:
+    image: node:20
+    working_dir: /usr/src/app
+    volumes:
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_BACKEND_URL=http://host.docker.internal:3000
+    command: npm run dev -- --host 0.0.0.0

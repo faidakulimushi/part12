@@ -19,6 +19,6 @@ describe('Todo component', () => {
       />
     )
 
-    expect(screen.getByText('Learn Docker')).toBeInTheDocument()
+    expect(screen.getByText('TODO: Learn Docker')).toBeInTheDocument()
   })
 })
