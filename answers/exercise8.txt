@@ -1,0 +1,64 @@
+Exercise 8: Mongo CLI
+
+Step 1: Start MongoDB
+
+$ docker run -d --name mongo \
+  -e MONGO_INITDB_ROOT_USERNAME=root \
+  -e MONGO_INITDB_ROOT_PASSWORD=example \
+  -e MONGO_INITDB_DATABASE=the_database \
+  -p 27017:27017 \
+  mongo
+
+Step 2: Check running containers
+
+$ docker ps
+
+CONTAINER ID   IMAGE                       STATUS
+08c9c9119421   mongo                       Up
+7c8edfd23e27   todo-backend-todo-backend   Up
+
+Step 3: Connect to Mongo CLI
+
+$ docker exec -it mongo bash
+
+root@08c9c9119421:/# mongosh -u root -p example
+
+Using MongoDB: 8.3.11
+Using Mongosh: 2.11.1
+
+test> show dbs
+admin
+config
+local
+test
+
+test> use the_database
+switched to db the_database
+
+the_database> show collections
+
+the_database> db.todos.find({})
+[]
+
+the_database> db.todos.insertOne({
+  text: "Increase the number of tools in my tool belt",
+  done: false
+})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6abe093c28b98fca374f035c')
+}
+
+the_database> show collections
+todos
+
+the_database> db.todos.find({})
+[
+  {
+    _id: ObjectId('6abe093c28b98fca374f035c'),
+    text: 'Increase the number of tools in my tool belt',
+    done: false
+  }
+]
+
+The new todo was successfully inserted using Mongo CLI and verified in the Express application.
