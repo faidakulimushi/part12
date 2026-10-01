@@ -1,0 +1,35 @@
+$ docker exec -it todo-backend-redis-1 redis-cli
+127.0.0.1:6379> KEYS *
+1) "added_todos"
+127.0.0.1:6379> GET added_todos
+"1"
+127.0.0.1:6379> SET added_todos 9001
+OK
+127.0.0.1:6379> GET added_todos
+"9001"
+127.0.0.1:6379> exit
+
+$ curl http://localhost:3000/todos/statistics
+{"added_todos":9001}
+
+$ curl -X POST http://localhost:3000/todos \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Exercise 11 test"}'
+{"text":"Exercise 11 test","done":false,"_id":"6abe1b1e4b510b02bcdc539e","__v":0}
+
+$ docker exec -it todo-backend-redis-1 redis-cli
+127.0.0.1:6379> GET added_todos
+"9002"
+127.0.0.1:6379> DEL added_todos
+(integer) 1
+127.0.0.1:6379> KEYS *
+(empty array)
+127.0.0.1:6379> exit
+
+$ curl -X POST http://localhost:3000/todos \
+  -H "Content-Type: application/json" \
+  -d '{"text":"Exercise 11 after delete"}'
+{"text":"Exercise 11 after delete","done":false,"_id":"6abe1bba4b510b02bcdc53a0","__v":0}
+
+$ curl http://localhost:3000/todos/statistics
+{"added_todos":1}
