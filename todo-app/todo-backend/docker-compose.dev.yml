@@ -1,0 +1,14 @@
+services:
+  mongo:
+    image: mongo
+    ports:
+      - "3456:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: the_username
+      MONGO_INITDB_ROOT_PASSWORD: the_password
+      MONGO_INITDB_DATABASE: the_database
+
+  redis:
+    image: redis
+    ports:
+      - "3457:6379"
