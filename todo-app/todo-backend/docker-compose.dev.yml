@@ -1,5 +1,5 @@
 services:
-  server:
+  todo-backend:
     build:
       context: .
       dockerfile: dev.Dockerfile
