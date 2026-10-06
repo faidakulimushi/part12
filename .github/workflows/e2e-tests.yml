@@ -24,7 +24,7 @@ jobs:
 
       - name: Build todo-frontend image
         working-directory: ./todo-app/todo-frontend
-        run: docker build -t todo-front -f Dockerfile .
+        run: docker build --build-arg VITE_BACKEND_URL=/api -t todo-front -f Dockerfile .
 
       - name: Start todo-app with Docker Compose
         working-directory: ./todo-app
@@ -82,3 +82,4 @@ jobs:
         if: always()
         working-directory: ./todo-app
         run: docker compose down -v
+
